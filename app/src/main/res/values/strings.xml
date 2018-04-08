@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Green Music</string>
+    <string name="sample_artist">Madonna</string>
+    <string name="sample_song">Girl Gone Wild</string>
+</resources>
