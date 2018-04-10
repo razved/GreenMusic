@@ -11,7 +11,10 @@ import android.widget.Toast;
 public class CurrentSongActivity extends AppCompatActivity {
 
     final static String NOTNOW = "I'm sorry, it's not working now :(";
-    Song nowPlaying;
+    private Song nowPlaying;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

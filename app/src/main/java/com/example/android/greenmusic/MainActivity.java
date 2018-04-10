@@ -17,13 +17,21 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     final static String NOTNOW = "I'm sorry, it's not working now :(";
-    Song currentSong;
+    private Song currentSong;
     //Define variables
-    TextView currentSongArtist;
-    TextView currentSongName;
-    ImageView currentSongCover;
+    private TextView currentSongArtist;
+    private TextView currentSongName;
+    private ImageView currentSongCover;
     //Index of current song in playlist
-    int indexOfSong;
+    private int indexOfSong;
+
+    //ViewHolder to improve efficiency of code
+    static class ViewHolder {
+        TextView currentSongArtist;
+        TextView currentSongName;
+        TextView currentSongLong;
+        ImageView currentSongCover;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
