@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     final static String NOTNOW = "I'm sorry, it's not working now :(";
     private Song currentSong;
@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView currentSongCover;
     //Index of current song in playlist
     private int indexOfSong;
-
+    private Toast toast;
     //ViewHolder to improve efficiency of code
     static class ViewHolder {
         TextView currentSongArtist;
@@ -73,9 +73,10 @@ public class MainActivity extends AppCompatActivity {
                 openCurrentSongActivity();
             }
         });
-
+        toast = Toast.makeText(getApplicationContext(), NOTNOW, Toast.LENGTH_SHORT);
         //handle click on album cover image and open CurrentSong Activity
         ImageView coverImage = (ImageView) findViewById(R.id.current_cover_image);
+
         coverImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,43 +86,40 @@ public class MainActivity extends AppCompatActivity {
 
         //handle click on play button
         ImageView playButton = (ImageView) findViewById(R.id.play_button);
-        playButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast toast = Toast.makeText(getApplicationContext(), NOTNOW, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+        playButton.setOnClickListener(this);
         //handle click on pause button
         ImageView pauseButton = (ImageView) findViewById(R.id.pause_button);
-        pauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast toast = Toast.makeText(getApplicationContext(), NOTNOW, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
-        //handle click on next button
+        pauseButton.setOnClickListener(this);
+
         ImageView nextButton = (ImageView) findViewById(R.id.next_track_button);
-        nextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast toast = Toast.makeText(getApplicationContext(), NOTNOW, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+        nextButton.setOnClickListener(this);
+
         //handle click on previous button
         ImageView previousButton = (ImageView) findViewById(R.id.previous_track_button);
-        previousButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast toast = Toast.makeText(getApplicationContext(), NOTNOW, Toast.LENGTH_SHORT);
-                toast.show();
-            }
-        });
+        previousButton.setOnClickListener(this);
 
         showCurrentSong(currentSong);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.play_button:
+                toast.show();
+                break;
+            case R.id.pause_button:
+                toast.show();
+                break;
+            case R.id.next_track_button:
+                toast.show();
+                break;
+            case R.id.previous_track_button:
+                toast.show();
+                break;
+            default:
+                break;
+        }
     }
 
     private void openCurrentSongActivity() {

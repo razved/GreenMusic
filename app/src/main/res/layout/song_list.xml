@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/cover_image_view"
         android:padding="4dp"
-        android:textColor="#000000"
+        android:textColor="@color/song_name_list"
         tools:text="Name of song"/>
     <TextView
         android:id="@+id/artist_text_view"
